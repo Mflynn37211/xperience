@@ -12,10 +12,6 @@
  *
  *= require_tree .
  *= require_self
-<<<<<<< HEAD
- *= require foundation
-=======
- *= require foundation_and_overrides
 
->>>>>>> 3221ad698dff02f6c63676f9be37c62585ffff4c
+ *= require foundation_and_overrides
  */
