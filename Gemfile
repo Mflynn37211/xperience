@@ -1,6 +1,7 @@
 source 'https://rubygems.org'
 
-
+gem 'foundation-rails'
+gem 'devise'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
@@ -26,16 +27,21 @@ gem 'sdoc', '~> 0.4.0',          group: :doc
 # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
 gem 'spring',        group: :development
 
-group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
-end
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
 # Use unicorn as the app server
 # gem 'unicorn'
 group :development, :test do
-  gem 'rspec-rails', '~> 3.0.0'
+  gem 'valid_attribute'
+  gem 'shoulda'
+  gem 'pry-rails'
+  gem 'rspec-rails'
+  gem 'capybara'
+  gem 'launchy'
+  gem 'factory_girl_rails'
+  gem 'factory_girl'
 end
 
 # Use Capistrano for deployment
