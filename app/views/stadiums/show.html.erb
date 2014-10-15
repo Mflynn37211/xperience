@@ -1,6 +1,6 @@
-<h2>  Stadium: <%= @stadium.name %> </h2>
+<h2>  <%= @stadium.name %> </h2>
   <div>
-    <%= image_tag @stadium['photo'] %>
+    <%= image_tag @stadium['photo'], style:"height: 800px; width: 1000px;" %>
   </div>
   <div>
     Location: <%=@stadium.city %>, <%= @stadium.state %>
@@ -15,10 +15,10 @@
      Roof Type: <%=@stadium.roof_type%>
   </div>
   <div>
-    TEAM: <%=@stadium.team %>
+    Team: <%=@stadium.team %>
   </div>
   <div>
-    <%=image_tag @stadium['seating_chart'] %>
+    <%=image_tag @stadium['seating_chart'], style:"height: 200px; width: 200px;" %>
   </div>
   <div>
    Description: <%=@stadium.description %>
