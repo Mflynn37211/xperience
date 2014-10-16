@@ -6,90 +6,84 @@
             <div>
               <%= image_tag @stadium['photo'], style:"height: 800px; width: 1000px;" %>
            </div>
-             <div class="row">
-    <div class="large-12">
-      <div class="panel">
-        <h5>Add Experience</h5>
-          <%= form_for [@stadium, @experience] do |f| %>
-            <div>
-              <%= f.label :title %>
-              <%= f.text_field :title %>
-            </div>
-            <div>
-              <%= f.label :summary %>
-              <%= f.text_area :summary %>
-            </div>
-            <div class="large-3">
-              <%= f.label :food %>
-              <%= f.select :food, (1..5) %>
-            </div>
-            <div class="large-3">
-              <%= f.label :atmosphere%>
-              <%= f.select :atmosphere, (1..5) %>
-            </div>
-            <div class="large-3">
-              <%= f.label :neighborhood %>
-              <%= f.select :neighborhood, (1..5) %>
-            </div>
-            <div class="large-3">
-              <%= f.label :fans %>
-              <%= f.select :fans, (1..5) %>
-            </div>
-            <div><%= f.submit "Add Experience", class: "tiny button active nice round" %></div>
-         <% end %>
+      </div>
     </div>
   </div>
-</div>
-    </div>
-  </div>
-</div>
-
-
-
-<dl class="tabs" data-tab>
-  <dd class="active"><a href="#panel1">Experiences</a></dd>
-  <dd><a href="#panel2"> Stadium Layout</a></dd>
-  <dd><a href="#panel3">Stadium Information</a></dd>
-  <dd><a href="#panel4">Local Favorites</a></dd>
-</dl>
-<div class="tabs-content">
-  <div class="content active" id="panel1">
-    <% @experiences.each do |experience| %>
-  <div class="row">
-    <div class="large-12">
-      <div class="panel">
-        <div>
-          <h5><strong><%= experience.title %></strong></h5>
-        </div>
-        <div>
-          <h6><%= experience.summary %></h6>
-          <h6> Food: <%= experience.food %></h6>
-          <h6> Atmosphere: <%= experience.atmosphere%></h6>
-          <h6> Neighborhood: <%= experience.neighborhood %></h6>
-          <h6> Fans: <%= experience.fans %></h6>
+  <dl class="tabs" data-tab>
+    <dd class="active"><a href="#panel1">Experiences</a></dd>
+    <dd><a href="#panel2"> Stadium Layout</a></dd>
+    <dd><a href="#panel3">Stadium Information</a></dd>
+    <dd><a href="#panel4">Local Favorites</a></dd>
+  </dl>
+  <div class="tabs-content">
+    <div class="content active" id="panel1"><div class="row">
+        <div class="large-12">
+          <div class="panel">
+            <h5>Add Experience</h5>
+              <%= form_for [@stadium, @experience] do |f| %>
+                <div>
+                  <%= f.label :title %>
+                  <%= f.text_field :title %>
+                </div>
+                <div>
+                  <%= f.label :summary %>
+                  <%= f.text_area :summary %>
+                </div>
+                <div class="large-3">
+                  <%= f.label :food %>
+                  <%= f.select :food, (1..5) %>
+                </div>
+                <div class="large-3">
+                  <%= f.label :atmosphere%>
+                  <%= f.select :atmosphere, (1..5) %>
+                </div>
+                <div class="large-3">
+                  <%= f.label :neighborhood %>
+                  <%= f.select :neighborhood, (1..5) %>
+                </div>
+                <div class="large-3">
+                  <%= f.label :fans %>
+                  <%= f.select :fans, (1..5) %>
+                </div>
+                <div><%= f.submit "Add Experience", class: "tiny button active nice round" %></div>
+             <% end %>
+          </div>
+         </div>
+      </div>
+  <% @experiences.each do |experience| %>
+    <div class="row">
+      <div class="large-12">
+        <div class="panel">
+          <div>
+            <h5><strong><%= experience.title %></strong></h5>
+          </div>
+          <div>
+            <h6><%= experience.summary %></h6>
+            <h6> Food: <%= experience.food %></h6>
+            <h6> Atmosphere: <%= experience.atmosphere%></h6>
+            <h6> Neighborhood: <%= experience.neighborhood %></h6>
+            <h6> Fans: <%= experience.fans %></h6>
+          </div>
         </div>
       </div>
     </div>
-</div>
-<% end %>
-  </div>
-  <div class="content" id="panel2">
-   <div> <%=image_tag @stadium['seating_chart'], style:"height: 800px; width: 1000px;" %></div>
-  </div>
-  <div class="content" id="panel3">
-    <div> Location: <%=@stadium.city %>, <%= @stadium.state %></div>
-            <div> Capacity: <%=(@stadium.capacity)%></div>
-            <div> Playing Surface: <%=@stadium.playing_surface %> </div>
-            <div> Roof Type: <%=@stadium.roof_type%> </div>
-            <div> Team: <%=@stadium.team %> </div>
-            <div>
-             Description: <%=@stadium.description %>
-            </div>
-  </div>
-  <div class="content" id="panel4">
-    <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
-  </div>
-</div>
+  <% end %>
+    </div>
+      <div class="content" id="panel2">
+        <div> <%=image_tag @stadium['seating_chart'], style:"height: 800px; width: 1000px;" %></div>
+      </div>
+      <div class="content" id="panel3">
+        <div> Location: <%=@stadium.city %>, <%= @stadium.state %></div>
+        <div> Capacity: <%=(@stadium.capacity)%></div>
+        <div> Playing Surface: <%=@stadium.playing_surface %> </div>
+        <div> Roof Type: <%=@stadium.roof_type%> </div>
+        <div> Team: <%=@stadium.team %> </div>
+        <div> Description: <%=@stadium.description %> </div>
+      </div>
+      <div class="content" id="panel4">
+        <p>This is the fourth panel of the basic tab example. This is the fourth panel of the basic tab example.</p>
+      </div>
+    </div>
 
 
 
