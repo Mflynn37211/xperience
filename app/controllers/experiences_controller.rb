@@ -5,6 +5,19 @@ class ExperiencesController < ActionController::Base
     @experiences = Experience.new
   end
 
+  def edit
+    @experience = Experience.find(params[:id])
+    @stadium = Stadium.find(stadium_id)
+  end
+
+  def update
+    @experience= Experience.find(params[:id])
+    if @experience.update(experience_params)
+      flash[:notice]= "Experience updated successfully"
+      redirect_to stadium_path(params[:stadium_id])
+    end
+  end
+
   def create
     @experience = Experience.new(experience_params)
     @experience.stadium_id = params[:stadium_id]
