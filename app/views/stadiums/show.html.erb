@@ -75,31 +75,48 @@
         <div> <%=image_tag @stadium['seating_chart'], style:"height: 800px; width: 1000px;" %></div>
       </div>
       <div class="content" id="panel3">
-        <div> Location: <%=@stadium.city %>, <%= @stadium.state %></div>
-          <div> Capacity: <%=(@stadium.capacity)%></div>
-            <div> Playing Surface: <%=@stadium.playing_surface %> </div>
-              <div> Roof Type: <%=@stadium.roof_type%> </div>
-                <div> Team: <%=@stadium.team %> </div>
-                <div> Description: <%=@stadium.description %> </div>
+        <div class="panel">
+          <div>
+            Location: <%=@stadium.city %>, <%= @stadium.state %>
+          </div>
+          <div>
+              Capacity: <%=(@stadium.capacity)%>
+           </div>
+           <div>
+             Playing Surface: <%=@stadium.playing_surface %>
+           </div>
+           <div>
+             Roof Type: <%=@stadium.roof_type%>
+           </div>
+           <div>
+             Team: <%=@stadium.team %>
+           </div>
+         </div>
+        <div class="panel"> Description:
+          <p><%=@stadium.description %> </p>
+        </div>
       </div>
       <div class="content" id="panel4">
         <%@hotels.each do |hotel| %>
           <div class="panel" >
-          Hotel Name: <%= hotel[:name] %><br>
-          Hotel Image <%= image_tag hotel[:image_url] %> <br>
-          Hotel Rating: <%= hotel[:rating] %><br>
-          Hotel Website: <%= link_to "#{hotel[:url]}", hotel[:url] %><br>
-          Hotel Location: <%= hotel[:location] %> <br>
-
+           <%= hotel[:name] %><br>
+           <%= image_tag hotel[:image_url], style: "height: 100px; width: 150px;" %> <br>
+          Rating: <%= hotel[:rating] %><br>
+          Website: <%= link_to "#{hotel[:url]}", hotel[:url] %><br>
+          Location: <%= hotel[:location] %> <br>
+          Phone Number: <%= hotel[:display_phone] %>
         </div>
         <%end%>
      </div>
       <div class="content" id="panel5">
        <%@bars.each do |bar| %>
-        <div class="panel" >Bar Name: <%= bar[:name] %><br>
-          Bar Rating: <%= bar[:rating] %><br>
-          Bar Website: <%= link_to "#{bar[:url]}", bar[:url] %><br>
-          Bar Location: <%= bar[:location] %> <br>
+        <div class="panel" >
+           <%= bar[:name] %><br>
+           <%= image_tag bar[:image_url], style: "height: 100px; width: 150px;" %> <br>
+           Rating: <%= bar[:rating] %><br>
+           Website: <%= link_to "#{bar[:url]}", bar[:url] %><br>
+           Location: <%= bar[:location] %> <br>
+           Phone Number: <%= bar[:display_phone] %>
 
 
         </div>
@@ -107,10 +124,13 @@
       </div>
       <div class="content" id="panel6">
       <%@attractions.each do |a| %>
-        <div class="panel" > Name: <%= a[:name] %><br>
+        <div class="panel" >
+          <%= a[:name] %><br>
+          <%= image_tag a[:image_url], style: "height: 100px; width: 150px;" %> <br>
           Rating: <%= a[:rating] %><br>
           Website: <%= link_to "#{a[:url]}", a[:url] %><br>
-          Location: <%= a[:location] %>
+          Location: <%= a[:location] %> <br>
+          Phone Number: <%= a[:display_phone] %>
 
         </div>
       <%end%>
