@@ -32,7 +32,7 @@ class Stadium < ActiveRecord::Base
       }
       hotels << hotel_hash
     end
-    hotels
+    hotels.sort_by {|h| h[:rating]}.reverse
   end
 
 
@@ -48,7 +48,7 @@ class Stadium < ActiveRecord::Base
       }
         bars << bar_hash
       end
-      bars
+      bars.sort_by {|h| h[:rating]}.reverse
   end
 
   def top_attractions
@@ -64,6 +64,6 @@ class Stadium < ActiveRecord::Base
       }
         attractions << attraction_hash
       end
-      attractions
+      attractions.sort_by {|h| h[:rating]}.reverse
   end
 end
