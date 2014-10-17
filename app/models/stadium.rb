@@ -53,7 +53,7 @@ class Stadium < ActiveRecord::Base
 
   def top_attractions
       attractions = []
-      attraction_results = Yelp.client.search(self.city, { category_filter: 'nightlife', sort: "2", limit: 20 })
+      attraction_results = Yelp.client.search(self.city, { category_filter: 'arts', sort: 2, limit: 20 })
       attraction_results.businesses.each do |business|
       attraction_hash = {
           name: business.name,
