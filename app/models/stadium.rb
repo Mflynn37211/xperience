@@ -21,48 +21,49 @@ class Stadium < ActiveRecord::Base
     presence: true
 
   def top_hotels
-      @hotels = []
-      hotel_results = Yelp.client.search(self.city, { category_filter: 'hotels', sort: 2, limit: 20 })
-      hotel_results.businesses.each do |business|
+    hotels = []
+    hotel_results = Yelp.client.search(self.city, { category_filter: 'hotels', sort: 2, limit: 20 })
+    hotel_results.businesses.each do |business|
       hotel_hash = {
-          name: business.name,
-          rating: business.rating,
-          url: business.url,
-          location: business.location,
-          phone: business.phone
+        name: business.name,
+        rating: business.rating,
+        url: business.url,
+        location: business.location.display_address.join(", "),
       }
-        @hotels << hotel_hash
-      end
+      hotels << hotel_hash
+    end
+    hotels
   end
 
 
   def top_bars
-      @bars = []
+      bars = []
       bar_results = Yelp.client.search(self.city, { category_filter: 'bars', sort: 2, limit: 20 })
       bar_results.businesses.each do |business|
       bar_hash = {
           name: business.name,
           rating: business.rating,
           url: business.url,
-          location: business.location,
-          phone: business.phone,
+          location: business.location.display_address.join(", ")
       }
-        @bars << bar_hash
+        bars << bar_hash
       end
+      bars
   end
 
   def top_attractions
-      @attractions = []
+      attractions = []
       attraction_results = Yelp.client.search(self.city, { category_filter: 'nightlife', sort: "2", limit: 20 })
       attraction_results.businesses.each do |business|
       attraction_hash = {
           name: business.name,
           rating: business.rating,
           url: business.url,
-          location: business.location,
-          phone: business.phone
+          location: business.location.display_address.join(", ")
+
       }
-        @attractions << attraction_hash
+        attractions << attraction_hash
       end
+      attractions
   end
 end
