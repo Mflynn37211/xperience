@@ -2,7 +2,6 @@ class Stadium < ActiveRecord::Base
 
   has_many :experiences
 
-
   validates :name,
     presence: true
   validates :city,
@@ -29,12 +28,13 @@ class Stadium < ActiveRecord::Base
         rating: business.rating,
         url: business.url,
         location: business.location.display_address.join(", "),
+        image_url: business.respond_to?(:image_url) ? business.image_url : "https://s3.amazonaws.com/breakabletoy-stadiums/default.jpeg",
+        display_phone: business.respond_to?(:display_phone) ? business.phone : "No phone number available"
       }
       hotels << hotel_hash
     end
     hotels.sort_by {|h| h[:rating]}.reverse
   end
-
 
   def top_bars
       bars = []
@@ -44,11 +44,14 @@ class Stadium < ActiveRecord::Base
           name: business.name,
           rating: business.rating,
           url: business.url,
-          location: business.location.display_address.join(", ")
+          location: business.location.display_address.join(", "),
+          image_url: business.respond_to?(:image_url) ? business.image_url : "https://s3.amazonaws.com/breakabletoy-stadiums/default.jpeg",
+          display_phone: business.respond_to?(:display_phone) ? business.phone : "No phone number available"
       }
         bars << bar_hash
       end
       bars.sort_by {|h| h[:rating]}.reverse
+
   end
 
   def top_attractions
@@ -59,8 +62,9 @@ class Stadium < ActiveRecord::Base
           name: business.name,
           rating: business.rating,
           url: business.url,
-          location: business.location.display_address.join(", ")
-
+          location: business.location.display_address.join(", "),
+          image_url: business.respond_to?(:image_url) ? business.image_url : "https://s3.amazonaws.com/breakabletoy-stadiums/default.jpeg",
+          display_phone: business.respond_to?(:display_phone) ? business.phone : "No phone number available"
       }
         attractions << attraction_hash
       end
