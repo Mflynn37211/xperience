@@ -1,6 +1,6 @@
 class StadiumsController < ApplicationController
   def index
-   @stadiums = Stadium.all
+   @stadiums = Stadium.order(state: :asc)
   end
 
   def show
