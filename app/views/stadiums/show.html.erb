@@ -1,145 +1,174 @@
+<nav class="top-bar" data-topbar role="navigation">
+  <ul class="title-area">
+    <li class="name">
+      <h1><%= link_to "Xperience", root_path %></a></h1>
+    </li>
+    <li class="toggle-topbar icon"><a href="#"><span>Menu</span></a></li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+      <% if user_signed_in? %>
+        <li class="active"><%= link_to "Stadiums", stadiums_path %></li>
+        <li class="active"><%= link_to "Sign Out", destroy_user_session_path, data: {method: 'delete'} %></li>
+      <% else %>
+        <li class="active"><%= link_to "Stadiums", stadiums_path %></li>
+        <li class="active"><%= link_to "Log In", user_session_path %></li>
+      <% end %>
+    </ul>
+    <ul class="left">
+      <li class="active">
+       <% if !user_signed_in? %>
+        <%= link_to "Sign up", new_user_registration_path %></li>
+       <% end %>
+    </ul>
+  </section>
+</nav>
+
+
 <div class="row">
-  <div class="large-12 columns">
-    <div class="row">
-      <div class="large-12 columns">
-          <h2>  <%= @stadium.name %> </h2>
-            <div>
-              <%= image_tag @stadium['photo'], style:"height: 800px; width: 1000px;" %>
-           </div>
-      </div>
+    <div class="large-12 columns">
+      <h2>  <%= @stadium.name %> </h2>
+        <div>
+          <%= image_tag @stadium['photo'], style:"height: 800px; width: 1000px;" %>
+        </div>
     </div>
-  </div>
-  <dl class="tabs" data-tab>
-    <dd class="active"><a href="#panel1">Experiences</a></dd>
-    <dd><a href="#panel2"> Stadium Layout</a></dd>
-    <dd><a href="#panel3"> Stadium Info</a></dd>
-    <dd><a href="#panel4"> Local Hotels</a></dd>
-    <dd><a href="#panel5"> Local Bars</a></dd>
-    <dd><a href="#panel6"> Area Attractions</a></dd>
-  </dl>
+  </div><br>
+<div class="row">
+    <div class="large-12 columns">
+      <dl class="tabs" data-tab>
+        <dd class="active"><a href="#panel1">Experiences</a></dd>
+        <dd><a href="#panel2"> Stadium Layout</a></dd>
+        <dd><a href="#panel3"> Stadium Info</a></dd>
+        <dd><a href="#panel4"> Local Hotels</a></dd>
+        <dd><a href="#panel5"> Local Bars</a></dd>
+        <dd><a href="#panel6"> Area Attractions</a></dd>
+      </dl>
   <div class="tabs-content">
-    <div class="content active" id="panel"><div class="row">
-        <div class="large-12">
-          <div class="panel">
+    <div class="content active" id="panel1">
+        <div class="panel">
             <h5>Add Experience</h5>
               <%= form_for [@stadium, @experience] do |f| %>
-                <div>
-                  <%= f.label :title %>
-                  <%= f.text_field :title %>
-                </div>
                 <div>
                   <%= f.label :summary %>
                   <%= f.text_area :summary %>
                 </div>
-                <div class="large-3">
+                <div class="large-1">
                   <%= f.label :food %>
                   <%= f.select :food, (1..5) %>
                 </div>
-                <div class="large-3">
+                <div class="large-1">
                   <%= f.label :atmosphere%>
                   <%= f.select :atmosphere, (1..5) %>
                 </div>
-                <div class="large-3">
+                <div class="large-1">
                   <%= f.label :neighborhood %>
                   <%= f.select :neighborhood, (1..5) %>
                 </div>
-                <div class="large-3">
+                <div class="large-1">
                   <%= f.label :fans %>
                   <%= f.select :fans, (1..5) %>
                 </div>
-                <div><%= f.submit "Add Experience", class: "tiny button active nice round" %></div>
+                <div><%= f.submit "Add Experience", class: "tiny button active nice round" %>
+                </div>
              <% end %>
-          </div>
-         </div>
-      </div>
-  <% @experiences.each do |experience| %>
-    <div class="row">
-      <div class="large-12">
-        <div class="panel">
-          <div>
-            <h5><strong><%= experience.title %></strong></h5>
-          </div>
-          <div>
-            <h6><%= experience.summary %></h6>
-            <h6> Food: <%= experience.food %></h6>
-            <h6> Atmosphere: <%= experience.atmosphere%></h6>
-            <h6> Neighborhood: <%= experience.neighborhood %></h6>
-            <h6> Fans: <%= experience.fans %></h6>
-          </div>
         </div>
-      </div>
-    </div>
-  <% end %>
-    </div>
-      <div class="content" id="panel2">
-        <div> <%=image_tag @stadium['seating_chart'], style:"height: 600px; width: 800px;" %></div>
-      </div>
-      <div class="content" id="panel3">
-        <div class="panel">
-          <div>
-            Location: <%=@stadium.city %>, <%= @stadium.state %>
-          </div>
-          <div>
-              Capacity: <%=(@stadium.capacity)%>
-           </div>
-           <div>
-             Playing Surface: <%=@stadium.playing_surface %>
-           </div>
-           <div>
-             Roof Type: <%=@stadium.roof_type%>
-           </div>
-           <div>
-             Team: <%=@stadium.team %>
-           <div>
-            Year Opened: <%=@stadium.year %>
-           </div>
-           </div>
-         </div>
-        <div class="panel"> Description:
-          <p><%=@stadium.description %> </p>
+          <% @experiences.each do |experience| %>
+               <div class="panel">
+                  <div>
+                    <h6><%= experience.summary %></h6>
+                    <h6> Food: <%= experience.food %></h6>
+                    <h6> Atmosphere: <%= experience.atmosphere%></h6>
+                    <h6> Neighborhood: <%= experience.neighborhood %></h6>
+                    <h6> Fans: <%= experience.fans %></h6>
+                   </div>
+                </div>
+              </div>
+          <% end %>
+              <div class="content" id="panel2">
+                <div class="row">
+                  <div class="seating">
+                    <div class="small-10 large-centered columns">
+                    <div> <%=image_tag @stadium['seating_chart'], style:"height: 600px; width: 800px;" %>
+                    </div>
+                  </div>
+                </div>
+              </div>
         </div>
-      </div>
-      <div class="content" id="panel4">
-        <%@hotels.each do |hotel| %>
-          <div class="panel" >
-           <%= hotel[:name] %><br>
-           <%= image_tag hotel[:image_url], style: "height: 100px; width: 150px;" %> <br>
-          Rating: <%= hotel[:rating] %><br>
-          Website: <%= link_to "#{hotel[:url]}", hotel[:url] %><br>
-          Location: <%= hotel[:location] %> <br>
-          Phone Number: <%= hotel[:display_phone] %>
-        </div>
-        <%end%>
-     </div>
-      <div class="content" id="panel5">
-       <%@bars.each do |bar| %>
-        <div class="panel" >
-           <%= bar[:name] %><br>
-           <%= image_tag bar[:image_url], style: "height: 100px; width: 150px;" %> <br>
-           Rating: <%= bar[:rating] %><br>
-           Website: <%= link_to "#{bar[:url]}", bar[:url] %><br>
-           Location: <%= bar[:location] %> <br>
-           Phone Number: <%= bar[:display_phone] %>
-
-
-        </div>
-        <%end%>
-      </div>
-      <div class="content" id="panel6">
-      <%@attractions.each do |a| %>
-        <div class="panel" >
-          <%= a[:name] %><br>
-          <%= image_tag a[:image_url], style: "height: 100px; width: 150px;" %> <br>
-          Rating: <%= a[:rating] %><br>
-          Website: <%= link_to "#{a[:url]}", a[:url] %><br>
-          Location: <%= a[:location] %> <br>
-          Phone Number: <%= a[:display_phone] %>
-
-        </div>
-      <%end%>
-      </div>
-    </div>
-
+              <div class="content" id="panel3">
+                <div class="panel">
+                  <div>
+                    Location: <%=@stadium.city %>, <%= @stadium.state %>
+                  </div>
+                  <div>
+                      Capacity: <%=(@stadium.capacity)%>
+                   </div>
+                   <div>
+                     Playing Surface: <%=@stadium.playing_surface %>
+                   </div>
+                   <div>
+                     Roof Type: <%=@stadium.roof_type%>
+                   </div>
+                   <div>
+                     Team: <%=@stadium.team %>
+                   </div>
+                   <div>
+                    Year Opened: <%=@stadium.year %>
+                   </div>
+                </div>
+                <div class="panel"> Description:
+                  <p><%=@stadium.description %> </p>
+                </div>
+              </div>
+              <div class="content" id="panel4">
+                <%@hotels.each do |hotel| %>
+                <div class="row">
+                  <div class="small-6 large-centered columns">
+                    <div class="panel">
+                        <%= hotel[:name] %> <br>
+                        <%= image_tag hotel[:image_url], style: "height: 100px; width: 150px;" %> <br>
+                        Rating: <%= hotel[:rating] %><br>
+                        Website: <%= link_to "#{hotel[:url]}", hotel[:url] %><br>
+                        Location: <%= hotel[:location] %> <br>
+                        Phone Number: <%= hotel[:display_phone] %>
+                    </div>
+                  </div>
+                </div>
+                <%end%>
+             </div>
+              <div class="content" id="panel5">
+                <%@bars.each do |bar| %>
+                  <div class="row">
+                    <div class="small-6 large-centered columns">
+                      <div class="panel" >
+                           <%= bar[:name] %><br>
+                           <%= image_tag bar[:image_url], style: "height: 100px; width: 150px;" %> <br>
+                           Rating: <%= bar[:rating] %><br>
+                           Website: <%= link_to "#{bar[:url]}", bar[:url] %><br>
+                           Location: <%= bar[:location] %> <br>
+                           Phone Number: <%= bar[:display_phone] %>
+                      </div>
+                    </div>
+                  </div>
+                <%end%>
+              </div>
+              <div class="content" id="panel6">
+                <%@attractions.each do |a| %>
+                  <div class="row">
+                    <div class="small-6 large-centered columns">
+                      <div class="panel" >
+                        <%= a[:name] %><br>
+                        <%= image_tag a[:image_url], style: "height: 100px; width: 150px;" %> <br>
+                        Rating: <%= a[:rating] %><br>
+                        Website: <%= link_to "#{a[:url]}", a[:url] %><br>
+                        Location: <%= a[:location] %> <br>
+                        Phone Number: <%= a[:display_phone]%>
+                      </div>
+                    </div>
+                  </div>
+              <%end%>
+              </div>
+  </div>
+</div>
 
 
 
