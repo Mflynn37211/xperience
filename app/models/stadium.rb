@@ -1,5 +1,4 @@
 class Stadium < ActiveRecord::Base
-
   has_many :experiences
 
   validates :name,
@@ -18,6 +17,8 @@ class Stadium < ActiveRecord::Base
     presence: true
   validates :year,
     presence: true
+
+    paginates_per 8
 
   def top_hotels
     hotels = []
