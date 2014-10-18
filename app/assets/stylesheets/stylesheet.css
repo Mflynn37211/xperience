@@ -34,11 +34,12 @@ a:active {
 }
 
 .panel {
-    opacity: 0.4;
+    opacity: 0.62;
     filter: alpha(opacity=40);
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px; /* For IE8 and earlier */
+    background-color: red;
 }
 
 .panel:hover {
@@ -51,3 +52,5 @@ a:active {
     -moz-border-radius: 30px;
     border-radius: 30px;
   }
+
+
