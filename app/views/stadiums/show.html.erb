@@ -33,8 +33,19 @@
         </div>
     </div>
   </div><br>
+
+
+
+
+
+
+
+
+
+
+
 <div class="row">
-    <div class="large-12 columns">
+  <div class="large-12 columns">
       <dl class="tabs" data-tab>
         <dd class="active"><a href="#panel1">Experiences</a></dd>
         <dd><a href="#panel2"> Stadium Layout</a></dd>
@@ -86,14 +97,13 @@
           <% end %>
               <div class="content" id="panel2">
                 <div class="row">
-                  <div class="seating">
+                  <div class="seating"></div>
                     <div class="small-10 large-centered columns">
                     <div> <%=image_tag @stadium['seating_chart'], style:"height: 600px; width: 800px;" %>
                     </div>
                   </div>
                 </div>
               </div>
-        </div>
               <div class="content" id="panel3">
                 <div class="panel">
                   <div>
@@ -127,7 +137,7 @@
                         <%= hotel[:name] %> <br>
                         <%= image_tag hotel[:image_url], style: "height: 100px; width: 150px;" %> <br>
                         Rating: <%= hotel[:rating] %><br>
-                        Website: <br>   <%= link_to "#{hotel[:url]}", hotel[:url] %><br>
+                        Website: <%= link_to "#{hotel[:url]}", hotel[:url] %><br>
                         Location: <%= hotel[:location] %> <br>
                         Phone Number: <%= hotel[:display_phone] %>
                     </div>
