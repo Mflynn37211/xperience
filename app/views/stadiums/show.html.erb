@@ -23,8 +23,6 @@
     </ul>
   </section>
 </nav>
-
-
 <div class="row">
   <div class="large-12 columns">
     <h2>  <%= @stadium.name %> </h2>
@@ -32,7 +30,7 @@
         <%= image_tag @stadium['photo'], style:"height: 800px; width: 1000px;" %>
       </div>
   </div>
-</div>
+</div> <br>
 <div class="row">
   <div class="small-11 columns large-centered columns">
     <dl class="tabs" data-tab>
@@ -46,18 +44,17 @@
   <div class="tabs-content">
     <div class="content active" id="panel1">
       <div class="panel">
-      <h5>Share Your Experience</h5>
-        <%= form_for [@stadium, @experience] do |f| %>
-          <div><%= f.label :title %><%= f.text_field :title %></div>
-          <div><%= f.text_area :summary %></div>
-          <div class="large-1"><%= f.label :food %><%= f.select :food, (1..5) %></div>
-          <div class="large-1"><%= f.label :atmosphere%><%= f.select :atmosphere, (1..5) %></div>
-          <div class="large-1"><%= f.label :neighborhood %><%= f.select :neighborhood, (1..5) %></div>
-          <div class="large-1"><%= f.label :fans %><%= f.select :fans, (1..5) %></div>
-          <div><%= f.submit "Add Experience", class: "tiny button active nice round" %></div>
-        <% end %>
+        <h5>Share Your Experience</h5>
+          <%= form_for [@stadium, @experience] do |f| %>
+            <div><%= f.label :title %><%= f.text_field :title %></div>
+            <div><%= f.text_area :summary %></div>
+            <div class="large-1"><%= f.label :food %><%= f.select :food, (1..5) %></div>
+            <div class="large-1"><%= f.label :atmosphere%><%= f.select :atmosphere, (1..5) %></div>
+            <div class="large-1"><%= f.label :neighborhood %><%= f.select :neighborhood, (1..5) %></div>
+            <div class="large-1"><%= f.label :fans %><%= f.select :fans, (1..5) %></div>
+            <div><%= f.submit "Add Experience", class: "tiny button active nice round" %></div>
+          <% end %>
       </div>
-
         <% @experiences.each do |experience| %>
              <div class="panel">
                 <div>
@@ -68,12 +65,8 @@
                   <h6> Fans: <%= experience.fans %></h6>
                  </div>
               </div>
-            </div>
         <% end %>
-    </div>
-
-
-
+  </div>
    <div class="content" id="panel2">
      <div class="row">
         <div class="small-10 large-centered columns">
@@ -94,7 +87,6 @@
         <p><%=@stadium.description %> </p>
       </div>
     </div>
-
     <div class="content" id="panel4">
       <%@hotels.each do |hotel| %>
       <div class="row">
@@ -111,7 +103,6 @@
       </div>
       <%end%>
     </div>
-
     <div class="content" id="panel5">
         <%@bars.each do |bar| %>
         <div class="row">
@@ -128,9 +119,6 @@
         </div>
       <%end%>
     </div>
-
-
-
     <div class="content" id="panel6">
         <%@attractions.each do |a| %>
           <div class="row">
@@ -147,8 +135,6 @@
           </div>
       <%end%>
     </div>
-
-  </div>
  </div>
 </div>
 
