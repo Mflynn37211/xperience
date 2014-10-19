@@ -18,7 +18,7 @@ class Stadium < ActiveRecord::Base
   validates :year,
     presence: true
 
-    paginates_per 8
+    paginates_per 4
 
   def top_hotels
     hotels = []
