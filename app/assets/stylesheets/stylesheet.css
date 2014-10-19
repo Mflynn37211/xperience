@@ -24,13 +24,13 @@ a:link {
   color: #A0ACB8;
 }
 a:visited {
-  color: #FFFFFF;
+  color: #778899;
 }
 a:hover {
-  color: #A0ACB8;
+  color: #FF1493;
 }
 a:active {
-  color: #A0ACB8;
+  color: #FF0000;
 }
 
 .panel {
@@ -39,7 +39,7 @@ a:active {
     -webkit-border-radius: 30px;
     -moz-border-radius: 30px;
     border-radius: 30px; /* For IE8 and earlier */
-    background-color: red;
+    background-color: #CCCCCC;
 }
 
 .panel:hover {
@@ -47,10 +47,5 @@ a:active {
     filter: alpha(opacity=100); /* For IE8 and earlier */
 }
 
-.seating {
-    -webkit-border-radius: 30px;
-    -moz-border-radius: 30px;
-    border-radius: 30px;
-  }
 
 

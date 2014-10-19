@@ -27,19 +27,30 @@
   </section>
 </nav>
 
-<div class="slideshow row" style="margin-top: 20px">
+<div class="row" style="margin-top: 20px">
 
-<div>
+ <div class="small-9 large-centered columns">
+
+
+
   <% @stadiums.each do |stadium| %>
     <div class="panel ">
-      <%= image_tag stadium['photo'], style:"height: 200px; width: 400px;" %><br>
-      <%= link_to stadium.name, stadium_path(stadium)%><br>
-      <%=  stadium.city %>,<%=  stadium.state %><br>
-      <%=  stadium.team %>
+    <div class="small-7 large-centered columns">
+       <%= link_to stadium.name, stadium_path(stadium)%>
+       </div>
+    <div class="small-8 large-centered columns">
+      <%=image_tag stadium['photo'], style:"height: 200px; width: 400px;" %><br>
+      <div class="small-7 large-centered columns">
+
+      <%=stadium.city%>, <%=  stadium.state %><br>
+      <%=stadium.team %>
+      </div>
+    </div>
     </div>
 
-
 <% end %>
+</div>
+
 </div>
 
 <%= paginate @stadiums %>
