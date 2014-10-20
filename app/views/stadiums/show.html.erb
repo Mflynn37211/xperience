@@ -67,13 +67,56 @@
               </div>
         <% end %>
   </div>
+
+
+
+
+
+
    <div class="content" id="panel2">
      <div class="row">
         <div class="small-10 large-centered columns">
           <div> <%=image_tag @stadium['seating_chart'], style:"height: 600px; width: 800px;" %></div>
-        </div>
+          </div>
+      </div> <br>
+      <div class="row">
+      <div class="small-6 large-centered columns">
+      <div class="panel">
+        <h5>Where did you sit?</h5>
+          <%= form_for [@stadium, @seat] do |s| %>
+            <div><%= s.label "Section" %><%= s.text_field :section %></div>
+            <div><%= s.label "Row" %><%= s.text_field :row %></div>
+            <div><%= s.label "Seat Number" %><%= s.text_field :seat_number %></div>
+             <div><%= s.label "Tell us about it" %><%= s.text_area :seat_description %></div>
+            <div><%= s.submit "Submit", class: "tiny button active nice round" %></div>
+          <% end %>
+      </div>
+
+       <% @seats.each do |seat| %>
+             <div class="panel">
+                <div>
+                  <h6> Section: <%= seat.section %></h6>
+                  <h6> Row: <%= seat.row%></h6>
+                  <h6> Seat Number: <%= seat.seat_number %></h6>
+                  <h6> Seats Overview: <br> <%= seat.seat_description %></h6>
+                  </div>
+              </div>
+        <% end %>
+       </div>
       </div>
     </div>
+
+
+
+
+
+
+
+
+
+
+
+
     <div class="content" id="panel3">
       <div class="panel">
         <div> Location: <%=@stadium.city%>, <%=@stadium.state %></div>

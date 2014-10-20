@@ -17,7 +17,19 @@
   font-family: 'Great Vibes', cursive;
   text-align: center;
   display: block;
-  top: 25%;
+  top: 20%;
+}
+
+.header h2 {
+  font-size: 600%;
+  width: 100%;
+  color: #A0ACB8;
+  position: absolute;
+  margin: 0;
+  font-family: times, Times New Roman, times-roman, georgia, serif;;
+  text-align: center;
+  display: block;
+  top: 35%;
 }
 
 a:link {
