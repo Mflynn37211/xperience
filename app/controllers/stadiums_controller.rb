@@ -7,6 +7,8 @@ class StadiumsController < ApplicationController
     @stadium = Stadium.find(params[:id])
     @experiences = @stadium.experiences.order(created_at: :desc)
     @experience = Experience.new
+    @seats = @stadium.seats.order(created_at: :desc)
+    @seat = Seat.new
     @hotels = @stadium.top_hotels
     @bars = @stadium.top_bars
     @attractions = @stadium.top_attractions

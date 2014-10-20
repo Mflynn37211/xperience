@@ -36,10 +36,10 @@
   <% @stadiums.each do |stadium| %>
     <div class="panel ">
     <div class="small-7 large-centered columns">
-       <%= link_to stadium.name, stadium_path(stadium)%>
+       <%=stadium.name%>
        </div>
     <div class="small-8 large-centered columns">
-      <%=image_tag stadium['photo'], style:"height: 200px; width: 400px;" %><br>
+      <%= link_to (image_tag(stadium['photo'])), stadium_path(stadium) %><br>
       <div class="small-7 large-centered columns">
 
       <%=stadium.city%>, <%=  stadium.state %><br>

@@ -9,6 +9,9 @@ Rails.application.routes.draw do
     resources :stadiums do
       resources :experiences
     end
+      resources :stadiums do
+      resources :seats
+    end
 
   # You can have the root of your site routed with "root"
 

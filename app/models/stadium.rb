@@ -1,5 +1,6 @@
 class Stadium < ActiveRecord::Base
   has_many :experiences
+  has_many :seats
 
   validates :name,
     presence: true
