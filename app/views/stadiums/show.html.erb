@@ -24,7 +24,7 @@
   </section>
 </nav>
 <div class="row">
-  <div class="large-12 columns">
+  <div class="small-12 columns">
     <h2>  <%= @stadium.name %> </h2>
       <div>
         <%= image_tag @stadium['photo'], style:"height: 800px; width: 1000px;" %>
@@ -32,7 +32,7 @@
   </div>
 </div> <br>
 <div class="row">
-  <div class="small-11 columns large-centered columns">
+  <div class="small-12 columns large-centered columns">
     <dl class="tabs" data-tab>
       <dd class="active"><a href="#panel1">XPeriences</a></dd>
       <dd><a href="#panel2"> Stadium Layout</a></dd>
@@ -67,12 +67,6 @@
               </div>
         <% end %>
   </div>
-
-
-
-
-
-
    <div class="content" id="panel2">
      <div class="row">
         <div class="small-10 large-centered columns">
@@ -105,18 +99,6 @@
        </div>
       </div>
     </div>
-
-
-
-
-
-
-
-
-
-
-
-
     <div class="content" id="panel3">
       <div class="panel">
         <div> Location: <%=@stadium.city%>, <%=@stadium.state %></div>

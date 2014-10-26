@@ -27,27 +27,33 @@
   </section>
 </nav>
 
-<div class="row" style="margin-top: 20px">
 
- <div class="small-9 large-centered columns">
-  <% @stadiums.each do |stadium| %>
-    <div class="panel ">
-    <div class="small-7 large-centered columns">
-       <%=stadium.name%>
-       </div>
-    <div class="small-8 large-centered columns">
-      <%= link_to (image_tag(stadium['photo'])), stadium_path(stadium) %><br>
-      <div class="small-7 large-centered columns">
 
-      <%=stadium.city%>, <%=  stadium.state %><br>
-      <%=stadium.team %>
+    <div class="row" style="margin-top: 20px">
+       <div class="small-8 large-centered columns">
+          <% @stadiums.each do |stadium| %>
+            <div class="panel ">
+              <div class="small-7 large-centered columns">
+                <%=stadium.name%>
+              </div>
+              <div class="small-8 large-centered columns">
+                <div class="morph pic">
+                  <%= link_to (image_tag(stadium['photo'])), stadium_path(stadium) %><br>
+                 </div>
+                <div class="small-7 large-centered columns">
+
+            <%=stadium.city%>,<%= stadium.state %><br>
+            <%=stadium.team %>
+            </div>
+          </div>
+          </div>
+
+      <% end %>
       </div>
-    </div>
-    </div>
-
-<% end %>
-</div>
-
 </div>
 
 <%= paginate @stadiums %>
+
+<div class="morph pic">
+
+</div>
