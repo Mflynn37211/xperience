@@ -10,11 +10,8 @@
   <section class="top-bar-section">
     <ul class="right">
       <% if user_signed_in? %>
-        <li class="active"><%= link_to "Stadiums", stadiums_path %></li>
         <li class="active"><%= link_to "Sign Out", destroy_user_session_path, data: {method: 'delete'} %></li>
-
       <% else %>
-        <li class="active"><%= link_to "Stadiums", stadiums_path %></li>
         <li class="active"><%= link_to "Log In", user_session_path %></li>
       <% end %>
     </ul>
@@ -22,6 +19,8 @@
       <li class="active">
        <% if !user_signed_in? %>
         <%= link_to "Sign up", new_user_registration_path %></li>
+        <% else %>
+        <li class="active"><%= link_to "Profile", edit_user_registration_path %></li>
        <% end %>
     </ul>
   </section>
@@ -32,7 +31,7 @@
     <div class="row" style="margin-top: 20px">
        <div class="small-8 large-centered columns">
           <% @stadiums.each do |stadium| %>
-            <div class="panel ">
+            <div class="panel">
               <div class="small-7 large-centered columns">
                 <%=stadium.name%>
               </div>
@@ -54,6 +53,3 @@
 
 <%= paginate @stadiums %>
 
-<div class="morph pic">
-
-</div>

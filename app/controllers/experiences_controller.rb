@@ -7,7 +7,7 @@ class ExperiencesController < ActionController::Base
 
   def edit
     @experience = Experience.find(params[:id])
-    @stadium = Stadium.find(stadium_id)
+    @stadium = Stadium.find(params[:stadium_id])
   end
 
   def update
@@ -29,6 +29,14 @@ class ExperiencesController < ActionController::Base
       redirect_to stadium_path(params[:stadium_id])
     else
       flash[:notice]= "You didn't enter enough information."
+      redirect_to stadium_path(params[:stadium_id])
+    end
+  end
+
+  def show
+    @experience = Experience.find(params[:id])
+    if @experience.destroy
+      flash[:notice] = "Experience deleted successfully"
       redirect_to stadium_path(params[:stadium_id])
     end
   end

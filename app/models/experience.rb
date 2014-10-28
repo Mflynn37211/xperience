@@ -1,22 +1,17 @@
 class Experience < ActiveRecord::Base
 
-  belongs_to :stadiums
-  belongs_to :users
+  belongs_to :stadium
+  belongs_to :user
 
-  validates :user_id,
+  validates :user_id, :stadium_id, :title, :summary,
   presence: true
-  validates :stadium_id,
-  presence: :true
-  validates :title,
-  presence: :true
-  validates :summary,
-  presence: :true
-  validates :food,
+  validates :food, :atmosphere, :neighborhood, :fans,
   inclusion: { in: 1..5}
   validates :atmosphere,
   inclusion: { in: 1..5}
-  validates :neighborhood,
-  inclusion: { in: 1..5}
-  validates :fans,
-  inclusion: { in: 1..5}
+
+
+  def owner?(current_user)
+    user == current_user
+  end
 end

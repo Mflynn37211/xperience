@@ -19,6 +19,8 @@
       <li class="active">
        <% if !user_signed_in? %>
         <%= link_to "Sign up", new_user_registration_path %></li>
+        <% else %>
+        <li class="active"><%= link_to "Profile", edit_user_registration_path %></li>
        <% end %>
     </ul>
   </section>
@@ -63,7 +65,10 @@
                   <h6> Atmosphere: <%= experience.atmosphere%></h6>
                   <h6> Neighborhood: <%= experience.neighborhood %></h6>
                   <h6> Fans: <%= experience.fans %></h6>
-                 </div>
+                  <% if experience.owner?(current_user) %>
+                  <h6 class="tiny button active nice round"> <%= link_to "Delete review", stadium_experience_path(@stadium, experience) %> <h6>
+                 <% end %>
+                </div>
               </div>
         <% end %>
   </div>
@@ -92,9 +97,12 @@
                   <h6> Section: <%= seat.section %></h6>
                   <h6> Row: <%= seat.row%></h6>
                   <h6> Seat Number: <%= seat.seat_number %></h6>
-                  <h6> Seats Overview: <br> <%= seat.seat_description %></h6>
-                  </div>
-              </div>
+                  <h6> Seats Overview: <br> <br><%= seat.seat_description %></h6>
+                <% if seat.owner?(current_user) %>
+                  <h6 class="tiny button active nice round"> <%= link_to "Delete review", stadium_seat_path(@stadium, seat) %> <h6>
+                <% end %>
+                </div>
+            </div>
         <% end %>
        </div>
       </div>
