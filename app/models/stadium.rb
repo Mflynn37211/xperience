@@ -21,6 +21,10 @@ class Stadium < ActiveRecord::Base
 
     paginates_per 4
 
+  def self.search(query)
+    where("state ilike ?", "%#{query}%")
+  end
+
   def top_hotels
     hotels = []
     hotel_results = Yelp.client.search(self.city, { category_filter: 'hotels', sort: 2, limit: 20 })

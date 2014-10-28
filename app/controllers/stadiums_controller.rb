@@ -1,6 +1,12 @@
 class StadiumsController < ApplicationController
   def index
-   @stadiums = Stadium.order(state: :asc).page params[:page]
+   @stadiums = Stadium.order(name: :asc).page params[:page]
+
+   if params[:search]
+      @stadiums = Stadium.search(params[:search]).order("name").page(params[:page])
+    else
+      Stadium.order("name").page(params[:page])
+   end
   end
 
   def show
