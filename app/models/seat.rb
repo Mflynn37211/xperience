@@ -1,7 +1,7 @@
 class Seat < ActiveRecord::Base
 
-  belongs_to :stadiums
-  belongs_to :users
+  belongs_to :stadium
+  belongs_to :user
 
   validates :user_id, presence: true
   validates :stadium_id, presence: :true
@@ -9,5 +9,9 @@ class Seat < ActiveRecord::Base
   validates :row, presence: :true, length: { maximum: 5 }
   validates :seat_number, presence: :true, length: { maximum: 5 }
   validates :seat_description, presence: :true, length: { maximum: 200 }
+
+  def owner?(current_user)
+    user == current_user
+  end
 
 end

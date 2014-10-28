@@ -7,7 +7,7 @@ class SeatsController < ActionController::Base
 
   def edit
     @seat= Seat.find(params[:id])
-    @stadium = Stadium.find(stadium_id)
+    @stadium = Stadium.find(params[:stadium_id])
   end
 
   def update
@@ -22,16 +22,23 @@ class SeatsController < ActionController::Base
     @seat = Seat.new(seat_params)
     @seat.stadium_id = params[:stadium_id]
     @seat.user_id = current_user.id
-
-
     if @seat.save
       flash[:notice]= "Seat created successfully"
       redirect_to stadium_path(params[:stadium_id])
     else
       flash[:notice]= "You didn't enter enough information."
+      render stadium_path(params[:stadium_id])
+    end
+  end
+
+  def show
+    @seat = Seat.find(params[:id])
+    if @seat.destroy
+      flash[:notice] = "Seat deleted successfully"
       redirect_to stadium_path(params[:stadium_id])
     end
   end
+
 
 private
 
