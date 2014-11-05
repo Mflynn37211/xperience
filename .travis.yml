@@ -1,5 +1,6 @@
 language: ruby
 rvm:
   - 2.0.0-p481
+
 before_script:
   - psql -c 'create database xperience_test;' -U postgres
